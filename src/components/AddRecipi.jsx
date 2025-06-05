@@ -2,6 +2,9 @@ import React, { useState } from "react";
 // import { uuid } from "uuidv4";
 
 const AddRecipi = () => {
+
+//  const url ="http://localhost:3000/recipes"
+
   const [formData, setFormData] = useState({
     pic: "",
     name: "",
@@ -25,7 +28,7 @@ const AddRecipi = () => {
         "Content-Type": "application/json",
       },
     });
-    const data = await resp.json();
+    
   }
 
 //   async function handleReg() {
@@ -44,7 +47,7 @@ const AddRecipi = () => {
 
   return (
     <>
-      <div class="container">
+      <div className="container">
         <input type="file" placeholder="pic" name="pic" onChange={handleForm} />
         <input
           type="name"

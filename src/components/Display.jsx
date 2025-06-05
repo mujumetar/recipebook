@@ -1,22 +1,24 @@
 import React, { useEffect, useState } from 'react'
 import { Button, Form } from 'react-bootstrap';
+// import { useNavigate } from 'react-router-dom';
 
 
 const Display = () => {
-
-    // http://localhost:3000/recipes
-
-
-
     const [data, setData] = useState([])
 
+    // let navigator = useNavigate();
 
     function Fetchapi() {
         fetch(`http://localhost:3000/recipes`)
             .then((res) => res.json())
             .then((res) => setData(res),
                 console.log(data))
-    }
+
+            }
+
+            data.map((ele)=>{
+                console.log(ele.ingredients)
+            })
 
     async function del(id) {
         const resp = await fetch(`http://localhost:3000/recipes/${id}`, {
@@ -31,7 +33,7 @@ const Display = () => {
     useEffect(() => {
         Fetchapi()
     }, [])
-    
+
 
     function findel(e) {
         fetch(`http://localhost:3000/recipes?name=${e}`)
@@ -42,6 +44,11 @@ const Display = () => {
                 console.log(data);
             });
     }
+
+    // function liked(id) {
+    //     localStorage.setItem("each",JSON.stringify(id));
+    //     navigator("Favourites.jsx")
+    // }
 
 
     return (
@@ -69,13 +76,14 @@ const Display = () => {
                                     <div className="card-body">
                                         <h5 className="card-title">{ele.name}</h5>
                                         <p className="card-text">
-                                            {
-                                                ele.ingredients.map((el) => (
+                                            {/* {
+                                                ele.tag.map((el) => (
                                                     <li>{el}</li>
                                                 ))
-                                            }
+                                            } */}
                                         </p>
                                         <button className="btn btn-danger btn-sm" onClick={() => del(ele.id)}>🗑️</button>
+                                        {/* <button className="btn btn-danger btn-sm" onClick={() => liked(ele.id)}>🗑️</button> */}
                                     </div>
                                 </div>
                             </div>
