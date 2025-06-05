@@ -1,15 +1,14 @@
 
-import React from 'react'
+import React, { useEffect } from 'react'
 import { FcGoogle } from 'react-icons/fc'
 import app from '../firebaseconfig'
-import { getAuth, GoogleAuthProvider, signInWithPopup } from 'firebase/auth'
-import { useDispatch } from 'react-redux'
+import { browserLocalPersistence, getAuth, GoogleAuthProvider, onAuthStateChanged, setPersistence, signInWithPopup } from 'firebase/auth'
+// import { useDispatch } from 'react-redux'
 // import { useDispatch } from 'react-redux'
 
 const Login = () => {
     const provider = new GoogleAuthProvider(app)
     const auth = getAuth(app)
-    // const dispatch = useDispatch()
 
 
     const handleGoogles = async () => {
@@ -18,10 +17,27 @@ const Login = () => {
         console.log(res,cUser)
     }
 
+      useEffect(() => {
+        setPersistence(auth, browserLocalPersistence)
+        onAuthStateChanged(auth, (cUser) => {
+            if (cUser) {
+              console.log("done")
+            }
+            else {
+              console.log("!!!!!!!!")
+                
+            }
+        })
+
+
+    }, [auth])
+
     
     return (
         <div>
-            <button onClick={() => handleGoogles()}><FcGoogle /></button>
+            <div className=''>
+            <button onClick={() => handleGoogles()} className='  '><FcGoogle /></button>
+            </div>
         </div>
     )
 }

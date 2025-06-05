@@ -16,9 +16,7 @@ const Display = () => {
 
             }
 
-            data.map((ele)=>{
-                console.log(ele.ingredients)
-            })
+         
 
     async function del(id) {
         const resp = await fetch(`http://localhost:3000/recipes/${id}`, {

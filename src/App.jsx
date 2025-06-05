@@ -7,21 +7,20 @@ import AddRecipi from './components/AddRecipi'
 import Login from './components/Login'
 import { useSelector } from 'react-redux'
 import { Routes } from 'react-router-dom'
-// import Login from './components/Login'
-// import { Navbar } from 'react-bootstrap'
 
 function App() {
   let auth = useSelector(state => state.auth.auth)
+  console.log(auth)
   return (
     <>
       {/* <Login/> */}
 
-      <Navbars />
-      {/* {auth && <Navbar />} */}
-      {/* {!auth && <Login />} */}
       <Login />
+      <Navbars />
       <AddRecipi />
       <Display />
+
+
     </>
   )
 }

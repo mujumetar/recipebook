@@ -3,7 +3,7 @@ import React, { useState } from "react";
 
 const AddRecipi = () => {
 
-//  const url ="http://localhost:3000/recipes"
+   const url ="http://localhost:3000/recipes"
 
   const [formData, setFormData] = useState({
     pic: "",
@@ -20,7 +20,7 @@ const AddRecipi = () => {
       [name]: value,
     });
 
-    
+
     const resp = await fetch(url, {
       method: "POST",
       body: JSON.stringify(formData),
@@ -28,27 +28,27 @@ const AddRecipi = () => {
         "Content-Type": "application/json",
       },
     });
-    
+
   }
 
-//   async function handleReg() {
-//     try {
-//       const res = await formData(
-//         formData.name,
-//         formData.pic,
-//         formData.tag,
-//         formData.ingredients
-//       );
-//     } catch (error) {
-//       console.log(error.code);
-//       console.log(error.message);
-//     }
-//   }
+  //   async function handleReg() {
+  //     try {
+  //       const res = await formData(
+  //         formData.name,
+  //         formData.pic,
+  //         formData.tag,
+  //         formData.ingredients
+  //       );
+  //     } catch (error) {
+  //       console.log(error.code);
+  //       console.log(error.message);
+  //     }
+  //   }
 
   return (
     <>
       <div className="container">
-        <input type="file" placeholder="pic" name="pic" onChange={handleForm} />
+        <input type="text" placeholder="pic" name="pic" onChange={handleForm} />
         <input
           type="name"
           placeholder="name"
@@ -63,7 +63,7 @@ const AddRecipi = () => {
         />
         <input type="name" placeholder="tag" name="tag" onChange={handleForm} />
         <button type="submit" onClick={handleForm}>
-         ➕
+          ➕
         </button>
       </div>
     </>
